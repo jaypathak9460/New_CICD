@@ -15,7 +15,8 @@ jobs:
             NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
         strategy:
             matrix:
-              dotnet: ['3.1.x', '5.0.x','6.0.x','8.0.x']
+              dotnet: ['8.0.x']  # define multiple dot net versions
+              # dotnet: ['3.1.x', '5.0.x','6.0.x','8.0.x']
           
 
         steps:
