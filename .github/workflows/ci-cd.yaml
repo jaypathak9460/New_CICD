@@ -35,7 +35,10 @@ jobs:
 
             - name: Build App 🚀
               run: dotnet build -c Release --no-restore
-            
+
+            - name: Run Automated Tests ✔️
+              run: dotnet test -c Release
+
 
                 
 
