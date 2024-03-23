@@ -1,0 +1,35 @@
+name: cicd for angular_crud
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: checkout code 🙈
+            uses: actions/checkout@v4
+          
+            - name: Setup .NET Core SDK 💻
+            uses: actions/setup-dotnet@v4.0.0\
+            with:
+                dotnet-version:"8.0.x"
+
+            - name: RESTORE DEPENDECIES
+            run: dotnet restore
+
+            - name: Build App 🚀
+            run: dotnet build -c Release --no-restore
+            
+
+                
+
+
+
+        
+
+
+
+            
