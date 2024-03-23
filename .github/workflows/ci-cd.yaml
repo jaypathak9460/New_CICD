@@ -8,6 +8,16 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest
+        defaults:
+          run:
+            working-directory: ./Project    
+        env:
+            NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
+        strategy:
+            matrix:
+              dotnet: ['3.1.x', '5.0.x','6.0.x','8.0.x']
+          
+
         steps:
             - name: checkout code 🙈
               uses: actions/checkout@v4.1.1
@@ -15,10 +25,7 @@ jobs:
             - name: Setup .NET Core SDK 💻
               uses: actions/setup-dotnet@v4
               with:
-                dotnet-version: |
-                    3.1.x
-                    5.0.x
-                    8.0.x
+                dotnet-version: ${{ matrix.dotnet }}
                 cache: true
 
             - name: RESTORE DEPENDECIES
