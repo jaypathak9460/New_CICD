@@ -13,9 +13,9 @@ jobs:
             working-directory: ./Project    
         env:
             NUGET_PACKAGES: ${{ github.workspace }}/.nuget/packages
-        strategy:
-            matrix:
-              dotnet: ['8.0.x']  # define multiple dot net versions
+        # strategy:
+        #     matrix:
+        #       dotnet: ['8.0.x']  # define multiple dot net versions
               # dotnet: ['3.1.x', '5.0.x','6.0.x','8.0.x']
           
 
@@ -26,8 +26,9 @@ jobs:
             - name: Setup .NET Core SDK 💻
               uses: actions/setup-dotnet@v4
               with:
-                dotnet-version: ${{ matrix.dotnet }}
-                cache: true
+                # dotnet-version: ${{ matrix.dotnet }}
+                dotnet-version: '8.0.x'
+                # cache: true
 
             - name: RESTORE DEPENDECIES
               run: dotnet restore
