@@ -1,0 +1,33 @@
+<p>list-users works!</p>
+<div class="container">
+  <div class="row"> <button class="btn btn-primary" (click) ="createNewUser()">Add New</button></div>
+    <div class="card m-5 p-3">
+        <div class="card-body">
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Date Of Birth</th>
+                        <th>Roles</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of allUsers">
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.dateOfBirth | date: 'dd/MM/yyyy' }}</td>
+                    <td>{{ user.roles }}</td>
+                    <td>
+                      <button class="btn btn-primary" style="margin:10px" (click)="gotoUser(user.id)">Edit</button>
+                      <button class="btn btn-danger" style="margin:10px" (click)="deleteUser(user.id)">Delete</button>
+                    </td>
+
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

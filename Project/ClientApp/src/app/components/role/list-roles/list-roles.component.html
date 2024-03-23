@@ -1,0 +1,28 @@
+<p>list-roles works!</p>
+<div class="container">
+  <div class="row"> <button class="btn btn-primary" (click)="createANewRole()">Add New</button></div>
+  <div class="card m-5 p-3">
+    <div class="card-body">
+      <table class="table table-bordered table-striped table-hover">
+        <thead>
+          <tr>
+            <th>Role Name</th>
+
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let role of rolesList">
+            <td>{{ role.roleName }}</td>
+            <td>
+              <button class="btn btn-primary" style="margin:10px" (click)="gotoEdit(role.id)">Edit</button>
+              <button class="btn btn-danger" style="margin:10px" (click)="deleteRole(role.id)">Delete</button>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>

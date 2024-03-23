@@ -1,0 +1,33 @@
+<div class="row">
+ <button class="btn btn-info" [routerLink]="['/list-roles']">Back</button>
+</div>
+
+<div class="row" *ngIf ="RoleDTO">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="control-label">Role Name</label>
+          <label class="star">*</label>
+          <input class="form-control" [(ngModel)]="RoleDTO.roleName" />
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="control-label">Permissions</label>
+          <mat-form-field class="form-control" style="border:0px">
+            <mat-select placeholder="Select" multiple [(ngModel)]="RoleDTO.permissionList">
+              <mat-option *ngFor="let per of PermissionList" [value]="per.id">
+                {{ per.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="col-md-4" style="margin-top:25px">
+        <button class="btn btn-primary" (click)="saveRoleDetails()"> Save </button>
+      </div>
+    </div>
+  </div>
+</div>

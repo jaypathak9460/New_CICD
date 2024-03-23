@@ -1,0 +1,54 @@
+<div class="row">
+  <button class="btn btn-info" [routerLink]="['/list-users']">Back</button>
+</div>
+
+<div class="row" *ngIf="UsersDTO">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="control-label">First Name</label>
+          <label class="star">*</label>
+          <input class="form-control" [(ngModel)]="UsersDTO.firstName" />
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="control-label">Last Name</label>
+          <label class="star">*</label>
+          <input class="form-control" [(ngModel)]="UsersDTO.lastName" />
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <mat-form-field name="Date picker">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" style="width:max-content" [(ngModel)]="UsersDTO.dateOfBirth">
+            <mat-hint>MM/DD/YYYY hh:MM</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="control-label">Roles</label>
+          <mat-form-field class="form-control" style="border:0px">
+            <mat-select placeholder="Select" multiple [(ngModel)]="UsersDTO.roleList">
+              <mat-option *ngFor="let role of RolesList" [value]="role.id">
+                {{ role.roleName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        </div>
+        <div class="col-md-4" style="-ms-align-content: center; -webkit-align-content: center; align-content: center;">
+          <button class="btn btn-primary" (click)="saveUserDetails()"> Save </button>
+        </div>
+      </div>
+  </div>
+</div>
