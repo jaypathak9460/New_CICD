@@ -10,10 +10,10 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: checkout code 🙈
-            - uses: actions/checkout@v4.1.1
+              uses: actions/checkout@v4.1.1
           
             - name: Setup .NET Core SDK 💻
-            - uses: actions/setup-dotnet@v4
+              uses: actions/setup-dotnet@v4
               with:
                 dotnet-version: |
                     3.1.x
@@ -22,10 +22,10 @@ jobs:
                 cache: true
 
             - name: RESTORE DEPENDECIES
-            - run: dotnet restore
+              run: dotnet restore
 
             - name: Build App 🚀
-            - run: dotnet build -c Release --no-restore
+              run: dotnet build -c Release --no-restore
             
 
                 
