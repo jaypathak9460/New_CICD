@@ -24,7 +24,7 @@ namespace TestTheProject
         {
             // create Db contex
 
-            var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").AddEnvironmentVariables().Build();
             var optionsBuilder = new DbContextOptionsBuilder<AngularDBContext>();
             optionsBuilder.UseSqlServer(configuration["ConnectionStrings:DefaultConnection"]);
 

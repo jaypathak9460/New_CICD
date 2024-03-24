@@ -30,6 +30,14 @@ jobs:
                 dotnet-version: '8.0.x'
                 # cache: true
 
+            - name: Start SQL Server🤫
+              run: |
+                docker run -d -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=My@Jay@123" -e "MSSQL_PID=Express" -p 1433:1433 -d mcr.microsoft.com/mssql/server:latest 
+
+            - name: Sleep for 5 seconds
+              run: sleep 5s
+              shell: bash
+              
             - name: RESTORE DEPENDECIES
               run: dotnet restore
 
@@ -37,7 +45,9 @@ jobs:
               run: dotnet build -c Release --no-restore
 
             - name: Run Automated Tests ✔️
-              run: dotnet test -c Release 
+              env:
+                ConnectionStrings__DefaultConnection: "Server=localhost; Database=angular_crud_test;User=sa;Password=My@Jay@123;MultipleActiveResultSets=true"
+              run: dotnet test -c Release --no-build
 
 
                 
