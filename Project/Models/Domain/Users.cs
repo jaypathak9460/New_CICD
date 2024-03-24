@@ -10,8 +10,8 @@ namespace angular_crud.Models.Domain
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public DateTime? DateOfBirth { get; set; }
-        [ForeignKey("Id")]
-        public UserRoles? UserRoles { get; set; }
+        [ForeignKey("UserId")]
+        public virtual UserRoles? UserRoles { get; set; }
 
     }
 }

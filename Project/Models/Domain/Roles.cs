@@ -7,9 +7,9 @@ namespace angular_crud.Models.Domain
     public class Roles: BaseEntity
     {
         public string? RoleName { get; set; }
-        [ForeignKey("Id")]
 
-        public UserRoles? UserRoles { get; set; }   
+        [ForeignKey("RoleId")]
+        public virtual UserRoles? UserRoles { get; set; }   
 
     }
 }
