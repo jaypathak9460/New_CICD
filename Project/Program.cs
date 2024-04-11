@@ -24,9 +24,14 @@ namespace anuglar_crud
                                       .AllowAnyHeader()
                                       .AllowAnyMethod());
             });
+
+            // add health check for applications
+            builder.Services.AddHealthChecks();
+
             var app = builder.Build();
             app.UseCors("AllowOrigin");
-
+            //map the Health check to specific endpoint
+            app.MapHealthChecks("/heath");
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
