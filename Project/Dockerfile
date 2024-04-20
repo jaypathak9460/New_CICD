@@ -24,32 +24,34 @@
 
 FROM node:14 AS frontend
 WORKDIR /app
-COPY Project/ClientApp/package*.json ./
+COPY Project/package*.json ./
 RUN npm install
 COPY Project/ClientApp .
+RUN node --version
 RUN npm run build -- --prod
 
 
 # Use a .NET Core SDK image to build the project
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /app
 
 # Copy the solution file and the script to modify it
-COPY Project/anuglar_crud.sln ./
-COPY Project/change_sln.sh ./
+COPY anuglar_crud.sln ./
+COPY change_sln.sh ./
 
 # Run the script to modify the solution file
 # RUN chmod +x change_sln.sh
 # RUN ./change_sln.sh
 
 # Copy the .csproj file and restore any dependencies
-COPY Project/*.csproj ./
+COPY *.csproj ./
 
 RUN dotnet restore  
 
 # Copy the entire project and build it
-COPY Project/ ./
+COPY / ./
 RUN dotnet build -c Release -o out
+RUN dotnet dev-certs https --trust
 
 # Expose the necessary port for the .NET Core application
 EXPOSE 80
